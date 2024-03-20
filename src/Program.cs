@@ -59,33 +59,35 @@ namespace FunctionChallenges
         }
         static string SwapObjects<T>(ref T value1, ref T value2)
         {
-
             T temp;
-            if (typeof(T) != typeof(string) || typeof(T) != typeof(int))
+            if (typeof(T) == typeof(string) || typeof(T) == typeof(int))
             {
-                return "NOT SUPPORTED TYPE";
-            }
-            if (typeof(T) == typeof(string))
-            {
-                if (value1.ToString().Length <= 5 || value2.ToString().Length <= 5)
+                if (typeof(T) == typeof(string))
                 {
-                    temp = value1;
-                    value1 = value2;
-                    value2 = temp;
-                    return $"value1 : {value1} value2 : {value2}";
+                    if (value1.ToString().Length >= 5 && value2.ToString().Length >= 5)
+                    {
+                        temp = value1;
+                        value1 = value2;
+                        value2 = temp;
+                        return $"value1 : {value1} value2 : {value2}";
+                    }else{
+            return "Length must be more than 5";
+                    }
+                }
+                if (typeof(T) == typeof(int))
+                {
+                    if (Convert.ToInt32(value1) > 18 && Convert.ToInt32(value1) > 18)
+                    {
+                        temp = value1;
+                        value1 = value2;
+                        value2 = temp;
+                        return $"value1 : {value1} value2 : {value2}";
+                    }else{
+            return "Value must be more than 18";
+                    }
                 }
             }
-            if (typeof(T) == typeof(int))
-            {
-                if (Convert.ToInt32(value1) < 18 || Convert.ToInt32(value1) < 18)
-                {
-                    temp = value1;
-                    value1 = value2;
-                    value2 = temp;
-                    return $"value1 : {value1} value2 : {value2}";
-                }
-            }
-            return "SOMTHING WRONG";
+            return "NOT SUPPORTED TYPE";
         }
         static void GuessingGame()
         {
